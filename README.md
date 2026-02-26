@@ -28,4 +28,4 @@ Real-time scene and object classification on iPhone using Vision Transformer —
 
 ## Dataset
 
-[ImageNette](https://github.com/fastai/imagenette) — 10-class ImageNet subset, 224×224. See `data/README.md` for download instructions.
+[ImageNette](https://github.com/fastai/imagenette) — 10-class [ImageNet](https://www.image-net.org) subset, 224×224. See `data/README.md` for download instructions.
