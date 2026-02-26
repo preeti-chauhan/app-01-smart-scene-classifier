@@ -1,0 +1,7 @@
+models/
+data/imagenette*/
+**/__pycache__/
+.DS_Store
+*.pyc
+*.pyo
+.ipynb_checkpoints/
