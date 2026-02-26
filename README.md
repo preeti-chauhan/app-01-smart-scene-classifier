@@ -28,4 +28,4 @@ Real-time scene and object classification on iPhone using Vision Transformer —
 
 ## Dataset
 
-[ImageNette](https://github.com/fastai/imagenette) — 10-class [ImageNet](https://www.image-net.org) subset, 224×224. See `data/README.md` for download instructions.
+[SUN397](https://vision.princeton.edu/projects/2010/SUN/) — 397-category scene understanding dataset covering indoor and outdoor environments. A 10-class camera-relevant subset is used for training: beach, forest, mountain, kitchen, bedroom, street, restaurant, office, living room, park. Downloaded via HuggingFace `datasets`. See `data/README.md` for details.
