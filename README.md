@@ -28,4 +28,4 @@ Real-time scene and object classification on iPhone using Vision Transformer —
 
 ## Dataset
 
-[SUN397](https://vision.princeton.edu/projects/2010/SUN/) — 397-category scene understanding dataset covering indoor and outdoor environments. A 10-class camera-relevant subset is used for training: beach, forest, mountain, kitchen, bedroom, street, restaurant, office, living room, park. Downloaded via HuggingFace `datasets`. See `data/README.md` for details.
+[SUN397](https://huggingface.co/datasets/sun397) — 397-category scene understanding dataset covering indoor and outdoor environments. A 10-class camera-relevant subset is used for training: beach, forest, mountain, kitchen, bedroom, street, restaurant, office, living room, park. Downloaded via HuggingFace `datasets`. See `data/README.md` for details.

@@ -2,7 +2,7 @@
 
 ## SUN397
 
-[SUN397](https://vision.princeton.edu/projects/2010/SUN/) is a scene understanding dataset with 397 indoor and outdoor categories — covering the full range of environments an iPhone camera encounters.
+[SUN397](https://huggingface.co/datasets/sun397) is a scene understanding dataset with 397 indoor and outdoor categories — covering the full range of environments an iPhone camera encounters.
 
 **Why SUN397?**
 SUN397 contains real scenes (beach, forest, mountain, kitchen, street, office...) at sufficient resolution for ViT's 224×224 input. Unlike object datasets, every image is a scene — exactly what a Smart Scene Classifier should be trained on.
