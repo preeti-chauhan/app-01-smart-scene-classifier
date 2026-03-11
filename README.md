@@ -2,19 +2,23 @@
 
 Real-time scene classification on iPhone using Vision Transformer — with Grad-CAM visualization showing which regions of the image drove the prediction.
 
+[![Views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fpreeti-chauhan%2Fapp-01-smart-scene-classifier&count_bg=%2379C83D&title_bg=%23555555&title=views&edge_flat=true)](https://github.com/preeti-chauhan/app-01-smart-scene-classifier)
+
+---
+
 ## Demo
 
 *Screenshots and screen recording coming after training.*
 
 ## Notebooks
 
-| Notebook | Description |
-|---|---|
-| `01_self_attention.ipynb` | Scaled dot-product attention and multi-head attention from scratch |
-| `02_vit_from_scratch.ipynb` | Full ViT: patch embeddings, CLS token, positional encoding, transformer encoder |
-| `03_train_and_compare.ipynb` | Train ViT from scratch vs fine-tune pretrained ViT on SUN397 — accuracy comparison |
-| `04_gradcam_visualization.ipynb` | Grad-CAM and attention maps — visualizing what the model sees |
-| `05_coreml_export.ipynb` | Export to CoreML, benchmark on Apple Neural Engine |
+| Notebook | Description | Run |
+|---|---|---|
+| `01_self_attention.ipynb` | Scaled dot-product attention and multi-head attention from scratch | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/01_self_attention.ipynb) |
+| `02_vit_from_scratch.ipynb` | Full ViT: patch embeddings, CLS token, positional encoding, transformer encoder | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/02_vit_from_scratch.ipynb) |
+| `03_train_and_compare.ipynb` | Train ViT from scratch vs fine-tune pretrained ViT on SUN397 — accuracy comparison | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/03_train_and_compare.ipynb) |
+| `04_gradcam_visualization.ipynb` | Grad-CAM and attention maps — visualizing what the model sees | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/04_gradcam_visualization.ipynb) |
+| `05_coreml_export.ipynb` | Export to CoreML, benchmark on Apple Neural Engine | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/05_coreml_export.ipynb) |
 
 ## Stack
 
