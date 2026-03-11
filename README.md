@@ -20,7 +20,12 @@ Real-time scene classification on iPhone using Vision Transformer — with Grad-
 
 ## Running in Colab
 
-Colab's local filesystem resets when the session ends. Each notebook includes a Drive mount cell and saves/loads checkpoints from `/content/drive/MyDrive/app-01/` automatically — just run the cells in order.
+Colab's local filesystem resets when the session ends. Run the cells in order — Drive is handled automatically per notebook:
+
+- **01, 02** — no checkpoints, no Drive needed
+- **03** — trains two models, saves checkpoints to `/content/drive/MyDrive/app-01/models/`
+- **04** — loads checkpoint from Drive, saves Grad-CAM outputs to `/content/drive/MyDrive/app-01/assets/`
+- **05** — loads checkpoint from Drive, exports CoreML model to `/content/drive/MyDrive/app-01/models/`
 
 ## Stack
 
