@@ -34,4 +34,4 @@ Colab's local filesystem resets when the session ends. Each notebook includes a 
 
 ## Dataset
 
-[CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html) — 60,000 32×32 images across 10 classes (50k train / 10k test): airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck. Images are resized to 224×224 for ViT. Downloads automatically via `torchvision.datasets.CIFAR10` (~170 MB).
+[SUN397](https://3dvision.princeton.edu/projects/2010/SUN/) — scene understanding dataset with 397 indoor and outdoor categories. A 10-class camera-relevant subset is used: beach, forest, mountain, kitchen, bedroom, street, restaurant, office, living room, park. Loaded via HuggingFace datasets (`pc-ml-dl/sun397`).
