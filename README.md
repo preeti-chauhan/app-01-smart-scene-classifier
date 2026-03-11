@@ -2,7 +2,7 @@
 
 Real-time scene classification on iPhone using Vision Transformer — with Grad-CAM visualization showing which regions of the image drove the prediction.
 
-[![Views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fpreeti-chauhan%2Fapp-01-smart-scene-classifier&count_bg=%2379C83D&title_bg=%23555555&title=views&edge_flat=true)](https://github.com/preeti-chauhan/app-01-smart-scene-classifier)
+[![Views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/preeti-chauhan/app-01-smart-scene-classifier&count_bg=%2379C83D&title_bg=%23555555&title=views&edge_flat=false)](https://github.com/preeti-chauhan/app-01-smart-scene-classifier)
 
 ---
 
