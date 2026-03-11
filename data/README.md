@@ -25,4 +25,4 @@ Filtered in notebook `03_train_and_compare.ipynb` using `SUN397Subset`.
 - ~500 test images per class (~5,000 total)
 - Image size: variable → resized and center cropped to 224×224
 
-> **Note:** The original torchvision `SUN397(download=True)` is broken — the Princeton download URL returns a 403. The dataset is hosted on HuggingFace at `pc-ml-dl/sun397` as a workaround.
+> **Note:** The original torchvision `SUN397(download=True)` is broken — the Princeton and MIT download URLs are no longer publicly accessible. The dataset is hosted on HuggingFace at `pc-ml-dl/sun397` as a workaround.
