@@ -18,6 +18,10 @@ Real-time scene classification on iPhone using Vision Transformer — with Grad-
 | `04_gradcam_visualization.ipynb` | Grad-CAM and attention maps — visualizing what the model sees | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/04_gradcam_visualization.ipynb) |
 | `05_coreml_export.ipynb` | Export to CoreML, benchmark on Apple Neural Engine | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/05_coreml_export.ipynb) |
 
+## Running in Colab
+
+Colab's local filesystem resets when the session ends. Each notebook includes a Drive mount cell and saves/loads checkpoints from `/content/drive/MyDrive/app-01/` automatically — just run the cells in order.
+
 ## Stack
 
 | Tool | Role |
