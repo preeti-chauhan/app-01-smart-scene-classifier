@@ -2,15 +2,23 @@
 
 ## SUN397
 
-[SUN397](https://huggingface.co/datasets/sun397) is a scene understanding dataset with 397 indoor and outdoor categories — covering the full range of environments an iPhone camera encounters.
+[SUN397](https://pytorch.org/vision/stable/generated/torchvision.datasets.SUN397.html) is a scene understanding dataset with 397 indoor and outdoor categories — covering the full range of environments an iPhone camera encounters.
 
 **Why SUN397?**
 SUN397 contains real scenes (beach, forest, mountain, kitchen, street, office...) at sufficient resolution for ViT's 224×224 input. Unlike object datasets, every image is a scene — exactly what a Smart Scene Classifier should be trained on.
 
-**Download (HuggingFace — reliable CDN, no license prompt):**
+**Download (torchvision — official PyTorch, auto-verified via MD5):**
 ```python
-from datasets import load_dataset
-ds = load_dataset("sun397", split="train")
+from torchvision.datasets import SUN397
+from torchvision import transforms
+
+transform = transforms.Compose([
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+])
+
+dataset = SUN397(root='./data', download=True, transform=transform)
 ```
 
 **10 classes used (camera-relevant, indoor + outdoor):**
