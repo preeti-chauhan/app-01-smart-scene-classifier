@@ -10,22 +10,15 @@ Real-time scene classification on iPhone using Vision Transformer — with Grad-
 
 ## Notebooks
 
-| Notebook | Description | Run |
+Colab's local filesystem resets when the session ends. Run cells in order — Drive is handled automatically where needed.
+
+| Notebook | Description | Drive |
 |---|---|---|
-| `01_self_attention.ipynb` | Scaled dot-product attention and multi-head attention from scratch | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/01_self_attention.ipynb) |
-| `02_vit_from_scratch.ipynb` | Full ViT: patch embeddings, CLS token, positional encoding, transformer encoder | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/02_vit_from_scratch.ipynb) |
-| `03_train_and_compare.ipynb` | Train ViT from scratch vs fine-tune pretrained ViT on SUN397 — accuracy comparison | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/03_train_and_compare.ipynb) |
-| `04_gradcam_visualization.ipynb` | Grad-CAM and attention maps — visualizing what the model sees | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/04_gradcam_visualization.ipynb) |
-| `05_coreml_export.ipynb` | Export to CoreML, benchmark on Apple Neural Engine | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/05_coreml_export.ipynb) |
-
-## Running in Colab
-
-Colab's local filesystem resets when the session ends. Run the cells in order — Drive is handled automatically per notebook:
-
-- **01, 02** — no checkpoints, no Drive needed
-- **03** — trains two models, saves checkpoints to `/content/drive/MyDrive/app-01/models/`
-- **04** — loads checkpoint from Drive, saves Grad-CAM outputs to `/content/drive/MyDrive/app-01/assets/`
-- **05** — loads checkpoint from Drive, exports CoreML model to `/content/drive/MyDrive/app-01/models/`
+| `01_self_attention.ipynb` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/01_self_attention.ipynb) | Scaled dot-product attention and multi-head attention from scratch | — |
+| `02_vit_from_scratch.ipynb` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/02_vit_from_scratch.ipynb) | Full ViT: patch embeddings, CLS token, positional encoding, transformer encoder | — |
+| `03_train_and_compare.ipynb` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/03_train_and_compare.ipynb) | Train ViT from scratch vs fine-tune pretrained ViT on SUN397 — accuracy comparison | saves checkpoints |
+| `04_gradcam_visualization.ipynb` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/04_gradcam_visualization.ipynb) | Grad-CAM and attention maps — visualizing what the model sees | loads checkpoint |
+| `05_coreml_export.ipynb` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/05_coreml_export.ipynb) | Export to CoreML, benchmark on Apple Neural Engine | loads checkpoint |
 
 ## Stack
 
