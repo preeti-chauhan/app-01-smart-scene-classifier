@@ -1,6 +1,6 @@
 # Data
 
-> **Note:** The original dataset for this project was SUN397 (scene understanding). The SUN397 download URL from Princeton's server returns a 404 and is no longer available via torchvision. CIFAR-10 is used as a reliable alternative to demonstrate the ViT training comparison. The technical results (scratch vs fine-tuned accuracy gap) are equivalent.
+> **Note:** The original dataset for this project was [SUN397](https://docs.pytorch.org/vision/stable/generated/torchvision.datasets.SUN397.html) (scene understanding). The SUN397 download URL from Princeton's server returns a 404 and is no longer available via torchvision. CIFAR-10 is used as a reliable alternative to demonstrate the ViT training comparison. The technical results (scratch vs fine-tuned accuracy gap) are equivalent.
 
 ## CIFAR-10
 
