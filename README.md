@@ -34,4 +34,4 @@ Colab's local filesystem resets when the session ends. Each notebook includes a 
 
 ## Dataset
 
-[SUN397](https://docs.pytorch.org/vision/stable/generated/torchvision.datasets.SUN397.html) — 397-category scene understanding dataset covering indoor and outdoor environments. A 10-class camera-relevant subset is used for training: beach, forest, mountain, kitchen, bedroom, street, restaurant, office, living room, park. Downloaded via `torchvision.datasets.SUN397`. See `data/README.md` for details.
+[CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html) — 60,000 32×32 images across 10 classes (50k train / 10k test): airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck. Images are resized to 224×224 for ViT. Downloads automatically via `torchvision.datasets.CIFAR10` (~170 MB).
