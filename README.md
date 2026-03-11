@@ -1,6 +1,6 @@
 # Smart Scene Classifier
 
-Real-time scene and object classification on iPhone using Vision Transformer — with Grad-CAM visualization showing which regions of the image drove the prediction.
+Real-time scene classification on iPhone using Vision Transformer — with Grad-CAM visualization showing which regions of the image drove the prediction.
 
 ## Demo
 
@@ -21,7 +21,7 @@ Real-time scene and object classification on iPhone using Vision Transformer —
 | Tool | Role |
 |---|---|
 | [PyTorch](https://pytorch.org) | Model training (MPS backend — Apple Silicon) |
-| [timm](https://huggingface.co/docs/timm) | DINOv2 pretrained weights |
+| [timm](https://huggingface.co/docs/timm) | Pretrained ViT weights for fine-tuning |
 | [einops](https://einops.rocks) | Readable tensor operations |
 | [coremltools](https://apple.github.io/coremltools) | Export to CoreML for on-device inference |
 | [matplotlib](https://matplotlib.org) | Grad-CAM and attention map visualization |
