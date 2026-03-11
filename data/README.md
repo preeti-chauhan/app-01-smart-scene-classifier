@@ -1,5 +1,7 @@
 # Data
 
+> **Note:** The original dataset for this project was SUN397 (scene understanding). The SUN397 download URL from Princeton's server returns a 404 and is no longer available via torchvision. CIFAR-10 is used as a reliable alternative to demonstrate the ViT training comparison. The technical results (scratch vs fine-tuned accuracy gap) are equivalent.
+
 ## CIFAR-10
 
 [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html) is an image classification dataset with 60,000 32×32 images across 10 classes (50k train / 10k test).
