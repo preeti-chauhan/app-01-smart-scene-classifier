@@ -10,7 +10,7 @@ Real-time scene classification on iPhone using Vision Transformer — with Grad-
 
 ## Notebooks
 
-Colab's local filesystem resets when the session ends. Run cells in order — Drive is handled automatically where needed.
+> **Note:** If running in Colab, local filesystem resets when the session ends. Run cells in order — Drive is handled automatically where needed.
 
 | Notebook | Description | Drive |
 |---|---|---|
