@@ -7,12 +7,18 @@ Real-time scene classification on iPhone using Vision Transformer — with Grad-
 ## Results
 
 ### Training — Scratch vs Pretrained ViT
+Fine-tuning a pretrained ViT-B/16 converges faster and reaches higher accuracy than training from scratch on the same 10-class SUN397 subset — demonstrating the value of ImageNet pretraining for small datasets.
+
 ![Training curves](assets/training_curves.png)
 
 ### CoreML Inference — 10-class predictions
+Each image is classified by the exported CoreML model running on Mac. Labels in green are correct predictions; red are misclassifications. Confidence shown as the softmax probability of the top class.
+
 ![Predictions](assets/coreml_predictions.png)
 
 ### Latency Benchmark
+Single-image inference time across CoreML compute unit configurations vs PyTorch on MPS. ALL routes ops across Neural Engine, GPU, and CPU automatically. Results measured on Apple Silicon (50 runs after 10 warmup).
+
 ![Benchmark](assets/coreml_benchmark.png)
 
 ## Notebooks
