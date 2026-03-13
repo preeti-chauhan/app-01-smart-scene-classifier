@@ -4,9 +4,16 @@ Real-time scene classification on iPhone using Vision Transformer — with Grad-
 
 ---
 
-## Demo
+## Results
 
-*Screenshots and screen recording coming after training.*
+### Training — Scratch vs Pretrained ViT
+![Training curves](assets/training_curves.png)
+
+### CoreML Inference — 10-class predictions
+![Predictions](assets/coreml_predictions.png)
+
+### Latency Benchmark
+![Benchmark](assets/coreml_benchmark.png)
 
 ## Notebooks
 
