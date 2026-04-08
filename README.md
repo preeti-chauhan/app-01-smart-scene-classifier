@@ -4,6 +4,14 @@ Real-time scene classification on iPhone using Vision Transformer — with Grad-
 
 ---
 
+## iPhone App
+
+Scene classification running on-device via CoreML and Apple Neural Engine.
+
+![App demo](SmartSceneClassifier/demo.gif)
+
+---
+
 ## Results
 
 ### Training — Scratch vs Pretrained ViT

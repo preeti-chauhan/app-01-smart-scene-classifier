@@ -5,3 +5,11 @@ data/imagenette*/
 *.pyc
 *.pyo
 .ipynb_checkpoints/
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+
+# Large files
+*.mov
+*.mlpackage
