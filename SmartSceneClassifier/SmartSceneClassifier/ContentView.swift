@@ -100,12 +100,30 @@ struct ContentView: View {
                         ForEach(Array(predictions.enumerated()), id: \.offset) { index, pred in
                             PredictionRow(prediction: pred, rank: index + 1)
                         }
+
+                        Divider()
+
+                        // Low confidence warning
+                        if let top = predictions.first, top.confidence < 0.4 {
+                            Label("Low confidence — image may not match any supported scene.", systemImage: "exclamationmark.triangle.fill")
+                                .font(.caption)
+                                .foregroundStyle(.orange)
+                        }
+
+                        // Scene-only note
+                        Label("Classifies scenes, not people or objects. Point at a place.", systemImage: "info.circle")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+
+                        // Supported classes
+                        Text("Supported: beach · forest · mountain · kitchen · bedroom · street · restaurant · office · living room · park")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(16)
-
                 }
 
                     Spacer()
