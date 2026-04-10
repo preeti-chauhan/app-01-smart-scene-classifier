@@ -2,6 +2,8 @@
 
 Real-time scene classification on iPhone using Vision Transformer — with Grad-CAM visualization showing which regions of the image drove the prediction.
 
+[Read the blog post →](https://www.preeti-chauhan.com/Smart-Scene-Classifier/)
+
 ---
 
 ## iPhone App
