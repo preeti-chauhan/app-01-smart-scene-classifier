@@ -26,10 +26,10 @@ A 10-class camera-relevant subset is used: beach, forest, mountain, kitchen, bed
 |---|---|---|
 | Architecture | 6-layer ViT, d=256 (~6M params) | ViT-B/16 (~86M params) |
 | Starting weights | Random | ImageNet-21k pretrained |
-| Val accuracy (15 epochs) | ~55% | ~92% |
-| Converges | Slowly | Within 3–4 epochs |
+| Val accuracy | ~43% (15 epochs) | ~93% (5 epochs) |
+| Converges | Slowly | Within 3 epochs |
 
-Note: the scratch model uses a reduced config (6 layers, d_model=256) because training full ViT-B/16 from random weights on 7,500 images causes extreme overfitting — the model memorizes before it generalizes. The smaller architecture gives scratch training a fair chance. Fine-tuned ViT-B/16 reaches ~92% validation accuracy in under 4 epochs.
+Note: the scratch model uses a reduced config (6 layers, d_model=256) because training full ViT-B/16 from random weights on 7,500 images causes extreme overfitting — the model memorizes before it generalizes. The smaller architecture gives scratch training a fair chance. Fine-tuned ViT-B/16 reaches ~93% validation accuracy in 5 epochs.
 
 ---
 
@@ -81,12 +81,12 @@ Single-image inference time across CoreML compute unit configurations vs PyTorch
 
 | Compute Unit | Mean Latency |
 |---|---|
-| CPU + NE | **8.5 ms** |
-| CPU Only | 8.7 ms |
-| PyTorch MPS | 8.9 ms |
-| ALL (NE+GPU+CPU) | 9.8 ms |
+| ALL (NE+GPU+CPU) | **9.4 ms** |
+| CPU + NE | 9.5 ms |
+| CPU Only | 9.8 ms |
+| PyTorch MPS | 8.7 ms |
 
-`ALL` is slower here than `CPU+NE` because ViT-B/16 (171 MB) is too large to fit fully on the Neural Engine — `ALL` adds dispatch overhead across units instead of routing cleanly. `CPU+NE` gives the best result by keeping execution on the two most efficient units.
+ViT-B/16 (171 MB) is too large to benefit significantly from the Neural Engine — the speedup vs CPU-only is only 1.0×, compared to 4× for smaller models like YOLOv8n. PyTorch MPS outperforms all CoreML variants here, running directly on the GPU via Metal.
 
 ---
 
