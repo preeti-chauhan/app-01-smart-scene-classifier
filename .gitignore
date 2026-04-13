@@ -13,3 +13,6 @@ xcuserdata/
 # Large files
 *.mov
 *.mlpackage
+Sample_Images/
+data/cifar*
+data/sun397*

@@ -1,8 +1,91 @@
 # Smart Scene Classifier
 
-Real-time scene classification on iPhone using Vision Transformer — with Grad-CAM visualization showing which regions of the image drove the prediction.
+Real-time scene classification on iPhone using Vision Transformer — with attention map visualization showing which regions of the image drove the prediction.
 
 [Read the blog post →](https://www.preeti-chauhan.com/Smart-Scene-Classifier/)
+
+---
+
+## Dataset
+
+[SUN397](https://3dvision.princeton.edu/projects/2010/SUN/) — scene understanding dataset with 397 indoor and outdoor categories.
+
+A 10-class camera-relevant subset is used: beach, forest, mountain, kitchen, bedroom, street, restaurant, office, living room, park. Loaded via HuggingFace datasets (`pc-ml-dl/sun397`).
+
+---
+
+## Model
+
+**Vision Transformer (ViT-B/16)** — Dosovitskiy et al., 2020
+
+- Splits the image into 16×16 patches, linearly embeds each patch, and processes them as a sequence with a standard transformer encoder
+- A learnable CLS token aggregates information from all patches and is passed to a classification head
+- Pretrained on ImageNet-21k, fine-tuned on the 10-class SUN397 subset using [timm](https://huggingface.co/docs/timm)
+
+| | ViT from Scratch | ViT Fine-tuned |
+|---|---|---|
+| Starting weights | Random | ImageNet-21k pretrained |
+| Val accuracy (15 epochs) | ~55% | ~92% |
+| Converges | Slowly | Within 3–4 epochs |
+
+Fine-tuning a pretrained ViT-B/16 reaches ~92% validation accuracy in under 4 epochs. Training from scratch on the same data reaches ~55% after 15 epochs — demonstrating the value of pretraining for small datasets.
+
+---
+
+## Notebooks
+
+> **Note:** If running in Colab, local filesystem resets when the session ends. Run cells in order — Drive is handled automatically where needed.
+
+| Notebook | Description |
+|---|---|
+| `01_self_attention.ipynb`<br>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/01_self_attention.ipynb) | Scaled dot-product attention and multi-head attention from scratch |
+| `02_vit_from_scratch.ipynb`<br>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/02_vit_from_scratch.ipynb) | Full ViT: patch embeddings, CLS token, positional encoding, transformer encoder |
+| `03_train_and_compare.ipynb`<br>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/03_train_and_compare.ipynb) | Train ViT from scratch vs fine-tune pretrained ViT on SUN397 — saves checkpoints to Google Drive |
+| `04_gradcam_visualization.ipynb`<br>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/04_gradcam_visualization.ipynb) | CLS token attention maps — visualizing which patches drove the prediction |
+| `05_coreml_export.ipynb`<br>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/05_coreml_export.ipynb) | Export to CoreML, benchmark on Apple Neural Engine — loads checkpoint from Google Drive |
+
+---
+
+## Results
+
+### Training — Scratch vs Fine-tuned ViT
+
+Fine-tuning a pretrained ViT-B/16 converges faster and reaches higher accuracy than training from scratch on the same 10-class SUN397 subset.
+
+![Training curves](assets/training_curves.png)
+
+---
+
+### Attention Maps — Where the Model Looks
+
+ViT classifies via the CLS token, not individual patches. The attention map shows which patches the CLS token attended to in the last transformer block when making its prediction. Hot regions (red/yellow) are where the model focused.
+
+![Attention maps](assets/gradcam/gradcam.png)
+
+---
+
+### CoreML Inference — 10-class predictions
+
+Each image is classified by the exported CoreML model running on Mac. Labels in green are correct predictions; red are misclassifications. Confidence shown as the softmax probability of the top class.
+
+![Predictions](assets/coreml_predictions.png)
+
+---
+
+### Latency Benchmark
+
+Single-image inference time across CoreML compute unit configurations vs PyTorch on MPS. Results measured on Apple Silicon (50 runs after 10 warmup).
+
+![Benchmark](assets/coreml_benchmark.png)
+
+| Compute Unit | Mean Latency |
+|---|---|
+| CPU + NE | **8.5 ms** |
+| CPU Only | 8.7 ms |
+| PyTorch MPS | 8.9 ms |
+| ALL (NE+GPU+CPU) | 9.8 ms |
+
+`ALL` is slower here than `CPU+NE` because ViT-B/16 (171 MB) is too large to fit fully on the Neural Engine — `ALL` adds dispatch overhead across units instead of routing cleanly. `CPU+NE` gives the best result by keeping execution on the two most efficient units.
 
 ---
 
@@ -14,35 +97,6 @@ Scene classification running on-device via CoreML and Apple Neural Engine.
 
 ---
 
-## Results
-
-### Training — Scratch vs Pretrained ViT
-Fine-tuning a pretrained ViT-B/16 converges faster and reaches higher accuracy than training from scratch on the same 10-class SUN397 subset — demonstrating the value of ImageNet pretraining for small datasets.
-
-![Training curves](assets/training_curves.png)
-
-### CoreML Inference — 10-class predictions
-Each image is classified by the exported CoreML model running on Mac. Labels in green are correct predictions; red are misclassifications. Confidence shown as the softmax probability of the top class.
-
-![Predictions](assets/coreml_predictions.png)
-
-### Latency Benchmark
-Single-image inference time across CoreML compute unit configurations vs PyTorch on MPS. ALL routes ops across Neural Engine, GPU, and CPU automatically. Results measured on Apple Silicon (50 runs after 10 warmup).
-
-![Benchmark](assets/coreml_benchmark.png)
-
-## Notebooks
-
-> **Note:** If running in Colab, local filesystem resets when the session ends. Run cells in order — Drive is handled automatically where needed.
-
-| Notebook | Description |
-|---|---|
-| `01_self_attention.ipynb`<br>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/01_self_attention.ipynb) | Scaled dot-product attention and multi-head attention from scratch |
-| `02_vit_from_scratch.ipynb`<br>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/02_vit_from_scratch.ipynb) | Full ViT: patch embeddings, CLS token, positional encoding, transformer encoder |
-| `03_train_and_compare.ipynb`<br>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/03_train_and_compare.ipynb) | Train ViT from scratch vs fine-tune pretrained ViT on SUN397 — saves checkpoints to Google Drive |
-| `04_gradcam_visualization.ipynb`<br>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/04_gradcam_visualization.ipynb) | Grad-CAM and attention maps — loads checkpoint from Google Drive |
-| `05_coreml_export.ipynb`<br>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/preeti-chauhan/app-01-smart-scene-classifier/blob/main/notebooks/05_coreml_export.ipynb) | Export to CoreML, benchmark on Apple Neural Engine — loads checkpoint from Google Drive |
-
 ## Stack
 
 | Tool | Role |
@@ -51,8 +105,4 @@ Single-image inference time across CoreML compute unit configurations vs PyTorch
 | [timm](https://huggingface.co/docs/timm) | Pretrained ViT weights for fine-tuning |
 | [einops](https://einops.rocks) | Readable tensor operations |
 | [coremltools](https://apple.github.io/coremltools) | Export to CoreML for on-device inference |
-| [matplotlib](https://matplotlib.org) | Grad-CAM and attention map visualization |
-
-## Dataset
-
-[SUN397](https://3dvision.princeton.edu/projects/2010/SUN/) — scene understanding dataset with 397 indoor and outdoor categories. A 10-class camera-relevant subset is used: beach, forest, mountain, kitchen, bedroom, street, restaurant, office, living room, park. Loaded via HuggingFace datasets (`pc-ml-dl/sun397`).
+| [matplotlib](https://matplotlib.org) | Attention map visualization |
