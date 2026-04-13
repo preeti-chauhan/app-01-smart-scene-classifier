@@ -24,11 +24,12 @@ A 10-class camera-relevant subset is used: beach, forest, mountain, kitchen, bed
 
 | | ViT from Scratch | ViT Fine-tuned |
 |---|---|---|
+| Architecture | 6-layer ViT, d=256 (~6M params) | ViT-B/16 (~86M params) |
 | Starting weights | Random | ImageNet-21k pretrained |
 | Val accuracy (15 epochs) | ~55% | ~92% |
 | Converges | Slowly | Within 3–4 epochs |
 
-Fine-tuning a pretrained ViT-B/16 reaches ~92% validation accuracy in under 4 epochs. Training from scratch on the same data reaches ~55% after 15 epochs — demonstrating the value of pretraining for small datasets.
+Note: the scratch model uses a reduced config (6 layers, d_model=256) because training full ViT-B/16 from random weights on 7,500 images causes extreme overfitting — the model memorizes before it generalizes. The smaller architecture gives scratch training a fair chance. Fine-tuned ViT-B/16 reaches ~92% validation accuracy in under 4 epochs.
 
 ---
 
