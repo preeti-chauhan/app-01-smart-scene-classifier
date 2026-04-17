@@ -72,9 +72,9 @@ struct ContentView: View {
                 }
 
                 // ── Classify button ───────────────────────────────────────
-                if uiImage != nil {
+                if let image = uiImage {
                     Button {
-                        classifyImage(uiImage!)
+                        classifyImage(image)
                     } label: {
                         HStack {
                             if isClassifying {
@@ -140,10 +140,8 @@ struct ContentView: View {
     private func classifyImage(_ image: UIImage) {
         isClassifying = true
         classifier.classify(image: image) { results in
-            DispatchQueue.main.async {
-                self.predictions = results
-                self.isClassifying = false
-            }
+            self.predictions = results
+            self.isClassifying = false
         }
     }
 }
