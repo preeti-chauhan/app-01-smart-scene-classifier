@@ -16,7 +16,7 @@ A 10-class camera-relevant subset is used: beach, forest, mountain, kitchen, bed
 
 ## Model
 
-**Vision Transformer (ViT-B/16)** — Dosovitskiy et al., 2020
+**Vision Transformer (ViT-B/16)** — [Dosovitskiy et al., 2020](https://arxiv.org/abs/2010.11929)
 
 - Splits the image into 16×16 patches, linearly embeds each patch, and processes them as a sequence with a standard transformer encoder
 - A learnable CLS token aggregates information from all patches and is passed to a classification head
